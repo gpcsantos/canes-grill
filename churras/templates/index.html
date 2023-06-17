@@ -8,13 +8,13 @@
 <div class="container">
     <div class="row">
         <!-- Single Best Receipe Area -->
-        {% for prato in lista_pratos.values %}
+        {% for prato in lista_pratos %}
         <div class="col-12 col-sm-6 col-lg-4">
             <div class="single-best-receipe-area mb-30">
                 <img src="{% static 'img/bg-img/foto_receita.png' %}" alt="">
                 <div class="receipe-content">
-                    <a href="receita.html">
-                        <h5>{{ prato }}</h5>
+                    <a href="{% url 'churrasco' prato.id %}">
+                        <h5>{{ prato.nome_prato }}</h5>
                     </a>
                 </div>
             </div>
