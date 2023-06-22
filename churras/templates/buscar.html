@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block titulo %} Churras {% endblock %}
+
+{% block conteudo %}
+
+    <div class="container">
+        <div class="row">
+            <!-- Single Best Receipe Area -->
+            
+            {% for prato in lista_pratos %}
+            <div class="col-12 col-sm-6 col-lg-4">
+                <div class="single-best-receipe-area mb-30">
+                    {% if prato.foto_prato %}
+                        <img src="{{ prato.foto_prato.url }}" alt="">
+                    {% else %}
+                        <img src="{% static 'img/bg-img/foto_receita.png' %}" alt="">
+                    {% endif %}
+                    <div class="receipe-content">
+                        <a href="{% url 'churrasco' prato.id %}">
+                            <h5>{{ prato.nome_prato }}</h5>
+                            <h6>{{ prato.categoria }}</h6>
+                        </a>
+                    </div>
+                </div>
+            </div> 
+            {% empty %}
+                <div class="col-12">
+                    Não há pratos a serem mostrados.
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+{% endblock %}

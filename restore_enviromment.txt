@@ -1,0 +1,56 @@
+Se a máquina que for receber o restore não tem o git instalado. Será necessário fazer a instalação e configuração do git global.
+como segue:
+
+git config --global user.name "user_name"  - (user name do github)
+git config --global user.email "email_do_git"  - (email do github)
+## para credenciais em cache
+git config --global credential.helper cache
+git config --global credentias.helper store
+
+para clonar o repositório do github, vá para o passo 1
+
+
+LEMBRETE - comandos Uteis
+git init				- Inicia o git na pasta do projeto
+git branch -M main			- muda o nome da branch
+git remote add origin <<endereço https do repositorio no github>> - adiciona o site remoto (github)
+
+git add .
+git commit -m "mensagem_desejada"
+git push -u origin main 		- envia códigos da branch (main) para o orign (site github)
+
+
+1 - preparar pasta para restore do repositório
+2 - para clonar o github uso o comando.
+	git clone << endereço_do_github >>
+3 - criar venv - 
+	python -m venv venv
+4 - ativar ambiente virtual. Entrar na pasta venv/Scripts e executar activate
+	cd venv/Scripts
+	activate
+	cd ..
+	cd ..
+5 - instalar as bibliotecas (django e etc...)
+	python -m pip install -r requirements.txt
+
+
+CASO não tenha banco de dados criado (ambiente sem dados)
+- olhar configurações no arquivo settings.py e copiar as informações para criar o banco de dados.
+- após o banco criado rodar comando abaixo para criar as tabelas do projeto.
+	python manage.py migrate
+
+- criar super user no Django-admin
+	python manage.py createsuperuser
+
+
+CASO não tenha banco de dados criado (ambiente COM dados - DUMP)
+	- criar o banco de dados
+	- selecionar o banco de dados
+	- importar o DUMP
+
+
+
+
+
+
+
