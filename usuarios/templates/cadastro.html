@@ -4,7 +4,61 @@
 
 {% block conteudo %}
     
-    <h1>CADASTRO</h1>
+    <!-- ###### Contact Form Area Start -->
+    <div class="contact-area section-padding-0-80">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="section-heading">
+                        <h2>Criar Conta</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="contact-form-area">
+                        <form action="{% url 'cadastro' %}" method="post">
+                            <div class="row">
+                                <div class="col-12 col-lg-12">
+                                    {% csrf_token %}
+                                    <label for="nome"><b>Nome Completo</b></label>
+                                    <input type="text" name="nome" id="nome" class="form-control" placeholder="ex. Glauco Santos" required>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12 col-lg-12">
+                                    <label for="email"><b>E-mail</b></label>
+                                    <input type="email" name="email" id="email" class="form-control" placeholder="ex. gpcsantos@churras.com" required>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12 col-lg-6">
+                                    <label for="senha"><b>Senha</b></label>
+                                    <input type="password" name="senha" id="senha" class="form-control" placeholder="ex. informe sua senha" >
+                                </div>
+                            
+                                <div class="col-12 col-lg-6">
+                                    <label for="senha2"><b>Confire sua Senha</b></label>
+                                    <input type="password" name="senha2" id="senha2" class="form-control" placeholder="ex. confirme sua senha" >
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12 text-center">
+                                    <button type="submit" class="btn btn-success">Criar sua conta</button>
+                                    <button type="button" class="btn btn-danger" onclick="cancelar();">Cancelar cadastro</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
+<script>
+    function cancelar(){
+        location.href = "{% url 'index' %}"
+    }
+</script>
 
 {% endblock %}
