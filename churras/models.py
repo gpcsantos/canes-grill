@@ -2,7 +2,7 @@ from django.db import models
 from datetime import datetime
 from django.contrib.auth.models import User
 
-from pessoas.models import Pessoa
+#from pessoas.models import Pessoa
 
 # Create your models here.
 

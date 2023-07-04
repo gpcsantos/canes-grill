@@ -33,7 +33,7 @@ ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 
 INSTALLED_APPS = [
     'churras',
-    'pessoas',
+    # 'pessoas',
     'usuarios',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -138,7 +138,6 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS = [
     BASE_DIR / 'templates/static',
 ]
-
 
 # Media
 MEDIA_ROOT = BASE_DIR / 'media'

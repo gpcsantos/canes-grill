@@ -128,3 +128,65 @@ def cria_prato(request):
     
     messages.error(request, 'Você não tem permissão para Criar Pratos.')
     return redirect('index')
+
+def deleta_prato(request, prato_id):
+    # print(f'\n\nEntrou em DELETA_PRATO. Excluir prato {prato_id} ')
+    try:
+        prato = get_object_or_404(Prato, pk=prato_id)
+    except:
+        messages.error(request, 'Prato não foi encontrado')
+        return redirect('dashboard')
+    
+    messages.success(request, f'Prato {prato.nome_prato} apagado com sucesso!')
+    prato.delete()    
+    return redirect('dashboard')
+
+def edita_prato(request, prato_id):
+    try:
+        prato = get_object_or_404(Prato, pk=prato_id)
+    except:
+        messages.error(request, 'Prato não foi encontrado')
+        return redirect('dashboard')
+    
+    contexto = {
+        'prato' : prato,
+    }
+    return render(request, 'edita_prato.html', contexto)
+
+
+
+def atualiza_prato(request):
+    if request.user.is_authenticated:
+        if request.method == 'POST':
+            # recuperar dados do formulário
+            # print(f'\n{request.POST["nome_prato"]}')
+            prato_id = request.POST['prato_id']
+            nome_prato = request.POST['nome_prato']
+            ingredientes = request.POST['ingredientes']
+            modo_preparo = request.POST['modo_preparo']
+            tempo_preparo = request.POST['tempo_preparo']
+            rendimento = request.POST['rendimento']
+            categoria = request.POST['categoria']
+            # foto_prato = request.FILES['foto_prato']
+
+            prato = Prato.objects.get(pk=prato_id)
+
+            prato.nome_prato=nome_prato
+            prato.ingredientes=ingredientes
+            prato.modo_preparo=modo_preparo
+            prato.tempo_preparo=tempo_preparo
+            prato.rendimento=rendimento
+            prato.categoria=categoria
+            if 'foto_prato' in request.FILES:
+                prato.foto_prato=request.FILES['foto_prato']
+               
+            prato.save()
+            messages.success(request, 'Prato alterado com sucesso!')
+            return redirect('dashboard')
+      
+        return redirect('dashboard')
+    
+    messages.error(request, 'Você não tem permissão para Criar Pratos.')
+    return redirect('index')
+
+    
