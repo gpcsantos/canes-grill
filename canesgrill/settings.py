@@ -84,17 +84,27 @@ WSGI_APPLICATION = 'canesgrill.wsgi.application'
 #     }
 # }
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'db_churras',
+#         'USER': 'root',
+#         'PASSWORD': '',
+#         'HOST':'localhost',
+#         'PORT':'3306',
+#         'OPTIONS':{
+#             'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
+#         }
+#     }
+# }
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'db_churras',
-        'USER': 'root',
-        'PASSWORD': '',
-        'HOST':'localhost',
-        'PORT':'3306',
-        'OPTIONS':{
-            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
-        }
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'railway',
+        'USER': 'postgres',
+        'PASSWORD': 'XApEpHhSai6NEMdNBPsO',
+        'HOST':'containers-us-west-111.railway.app',
+        'PORT':'7159',
     }
 }
 
@@ -133,7 +143,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_ROOT = BASE_DIR / 'static'
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [
     BASE_DIR / 'templates/static',
