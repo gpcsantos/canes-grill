@@ -29,7 +29,8 @@ DEBUG = True
 ALLOWED_HOSTS = [
     '127.0.0.1',
     'localhost',
-    'https://canes-grill-senac-glauco.onrender.com'
+    'https://canes-grill-senac-glauco.onrender.com',
+    'canes-grill-senac-glauco.onrender.com',
     '*',
     ]
 
